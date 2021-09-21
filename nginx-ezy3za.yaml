@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-ezy3za
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-ezy3za
+  namespace: my-nginx-ezy3za
+  labels:
+    name: nginx-ezy3za
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-ezy3za
+  template:
+    metadata:
+      namespace: my-nginx-ezy3za
+      labels:
+        name: nginx-ezy3za
+    spec:
+      containers:
+      - name: nginx-ezy3za
+        image: nginx
+        ports:
+        - containerPort: 80
+
